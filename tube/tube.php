@@ -111,7 +111,7 @@ else {
     #video-controls{
         margin-top: 10px;
         padding: 8px;
-        width: 474px;
+        width: 436px;
     }
     label{
         color:white;
@@ -238,7 +238,7 @@ else {
             errorMessage: 'Il codice deve avere 11 cifre'
         }]);
     </script>
-        <p id="video-controls" class="black-65">Controlli: <b><a href="#" class="tubular-pause">Play/Pausa</a> | <a href="#" class="tubular-volume-up">Vol +</a> | <a href="#" class="tubular-volume-down">Vol -</a></b><a href="#" class="tubular-mute">Musica!</a><a href="#" class="nascondi" id="nascondi" onclick="nasc()" style="color:lightsteelblue;font-weight: bold">Nascondi</a><span id="full2"> | <a href="#" class="full" id="full" onclick="full()" style="color:lawngreen;font-weight: bold">Full Screen</a></span></p>
+        <p id="video-controls" class="black-65">Controlli: <b><a href="#" class="tubular-pause" id="pipa" onclick="vai3()" style="color: orange">Play <span style="color: #fff"> | </span></a><a href="#" class="tubular-volume-up">Vol +</a> | <a href="#" class="tubular-volume-down">Vol -</a></b><a href="#" class="tubular-mute" id="musica" onclick="vai3()">Musica!</a><a href="#" class="nascondi" id="nascondi" onclick="nasc()" style="color:lightsteelblue;font-weight: bold">Nascondi</a><span id="full2"> | <a href="#" class="full" id="full" onclick="full()" style="color:lawngreen;font-weight: bold">Full Screen</a></span></p>
 
     <div id="playlist"><p class="black-65" id="ultime" style="display:none">Ultime Scelte</p><br><?php echo $opi ?></div>
 </div>
