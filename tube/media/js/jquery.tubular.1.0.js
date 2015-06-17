@@ -90,7 +90,6 @@
             $stat=$('#stato');
             pipa=$('#pipa');
             musi=$('#musica');
-            vi=$('#video-controls');
             if(player.getPlayerState() == 1){
                 $tui.css("color", "white");
                 pipa.html('Pause <span style="color: #fff"> | </span> ');
@@ -100,13 +99,9 @@
                 $tui.attr('title', 'Apri in YouTube');
                 pipa.removeAttr("onclick");
                 musi.removeAttr("onclick");
-                if (vis==1)
-                    vi.css("width", "436px");
-                layer.setVolume(25);
+                player.setVolume(25);
             }else if(player.getPlayerState() == 2){
                 $tui.css("color", "#C8C7C7");
-                if (vis==1)
-                    vi.css("width", "423px");
                 pipa.html('Play <span style="color: #fff"> | </span> ');
                 $stat.html('');
                 pipa.removeAttr("onclick");

@@ -111,7 +111,7 @@ else {
     #video-controls{
         margin-top: 10px;
         padding: 8px;
-        width: 423px;
+        width: 436px;
     }
     label{
         color:white;
@@ -144,7 +144,6 @@ else {
 
         });
         function nasc(){
-            vis=0;
             nascq=$('#nascondi');
             vc=$('#video-controls');
             fuls=$('#full2');
@@ -154,13 +153,9 @@ else {
             nascq.attr("onclick","nasc2()");
             vc.css("margin-top","0px");
             fuls.css("display","none");
-            if(player.getPlayerState() == 1)
-                vc.css("width","330px");
-            else if (player.getPlayerState() == 2)
-                vc.css("width","315px");
+            vc.css("width","333px");
         }
         function nasc2(){
-            vis=1
             $('#pri').css("display","block");
             $('#playlist').css("display","inline-block");
             nascq.text('Nascondi');
