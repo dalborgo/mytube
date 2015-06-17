@@ -9,15 +9,8 @@
 |* 
 |* Thanks,
 |* Sean */
-function sleep(milliseconds) {
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-        if ((new Date().getTime() - start) > milliseconds){
-            break;
-        }
-    }
-}
-;(function ($, window) {
+
+(function ($, window) {
 
     // test for feature support and return if failure
     
@@ -34,7 +27,7 @@ function sleep(milliseconds) {
         muteButtonClass: 'tubular-mute',
         volumeUpClass: 'tubular-volume-up',
         volumeDownClass: 'tubular-volume-down',
-        increaseVolumeBy: 10,
+        increaseVolumeBy: 7,
         start: 0
     };
 
@@ -44,7 +37,7 @@ function sleep(milliseconds) {
         var options = $.extend({}, defaults, options),
             $body = $('body') // cache body node
             $node = $(node); // cache wrapper node
-
+        var nok=0;
         // build container
         var tubularContainer = '<div id="tubular-container" style="overflow: hidden; position: fixed; z-index: 1; width: 100%; height: 100%"><div id="tubular-player" style="position: absolute"></div></div><div id="tubular-shield" style="width: 100%; height: 100%; z-index: 2; position: absolute; left: 0; top: 0;"></div>';
 
@@ -57,12 +50,30 @@ function sleep(milliseconds) {
 
         // set up iframe player, use global scope so YT api can talk
         window.player;
-        window.onYouTubeIframeAPIReady = function() {
+        /*window.onYouTubeIframeAPIReady = function() {
+           gos();
+           nok=1;
+        }*/
+        if (nok==0) {
+            setTimeout(gos, 500);
+        }
+
+
+        window.onPlayerReady = function(e) {
+            resize();
+            if (options.mute) e.target.mute();
+            e.target.seekTo(options.start);
+            e.target.playVideo();
+ 
+        }
+
+        function gos() {
             player = new YT.Player('tubular-player', {
                 width: options.width,
                 height: Math.ceil(options.width / options.ratio),
                 videoId: options.videoId,
                 playerVars: {
+                    rel:0,
                     controls: 0,
                     showinfo: 0,
                     modestbranding: 1
@@ -74,22 +85,14 @@ function sleep(milliseconds) {
             });
         }
 
-        window.onPlayerReady = function(e) {
-            resize();
-            if (options.mute) e.target.mute();
-            e.target.seekTo(options.start);
-            e.target.playVideo();
- 
-        }
-
         window.onPlayerStateChange = function(state) {
             if(player.getPlayerState() == 1){
-                player.setVolume(30);
                 $('#titolo0').css("color", "white");
 
                 $("#titolo0").removeAttr("onclick");
                 $('#stato').html(' : Playing... ');
                 $("#titolo0").attr("onclick","vai2()");
+                player.setVolume(25);
             }else{
                 $('#titolo0').css("color", "mediumpurple");
                 $('#stato').html('');
@@ -134,6 +137,7 @@ function sleep(milliseconds) {
             player.playVideo();
         }).on('click', '.' + options.pauseButtonClass, function(e) { // pause button
             e.preventDefault();
+            //alert(player.getVideoUrl());
             if(player.getPlayerState() == 2){
                 player.playVideo();
                 player.unMute();

@@ -5,6 +5,11 @@ if (!isset($_GET['s']))
     $stt = "0";
 }else
     $stt = $_GET['s'];
+if (!isset($_GET['h']))
+{
+    $time = "0";
+}else
+    $time = $_GET['h'];
 
 if (!isset($_GET['n'])) {
     $nick = "";
@@ -32,10 +37,10 @@ if (!isset($_GET['c'])) {
             $nick = $r['nick'];
             $stt = $r['start'];
             $ovulo="window.open('$link?c=$cosd&n=$nick2&s=$stt2', '_self')";
-            $opi.='<p style="display: inline-block" class="black-65" ><span onclick="'.$ovulo.'" style="font-weight:bold;color:mediumpurple;text-decoration:underline;cursor: pointer" id="titolo'.$con.'"></span>'.$jk.'<span id="stato" style="font-weight:bold;color:lightsalmon"></span></p><br>';
+            $opi.='<p style="display: inline-block" class="black-65" ><span onclick="'.$ovulo.'" style="font-weight:bold;color:mediumpurple;text-decoration:underline;cursor: pointer" id="titolo'.$con.'"></span><span class="omin" style="display:none">'.$jk.'</span><span id="stato" style="font-weight:bold;color:lightsalmon"></span></p><br>';
         }else{
             $ovulo="window.open('$link?c=$cosd&n=$nick2&s=$stt2', '_self')";
-            $opi.='<p style="display: inline-block" class="black-65" ><span onclick="'.$ovulo.'" style="font-weight:bold;color:mediumpurple;text-decoration:underline;cursor: pointer" id="titolo'.$con.'"></span>'.$jk.'</p><br>';
+            $opi.='<p style="display: inline-block" class="black-65" ><span onclick="'.$ovulo.'" style="font-weight:bold;color:mediumpurple;text-decoration:underline;cursor: pointer" id="titolo'.$con.'"></span><span class="omin" style="display:none">'.$jk.'</span></p><br>';
             $giu.="getTit($con,'$cosd');";
         }
         $con++;
@@ -62,10 +67,10 @@ else {
             $jk='<span style="color:yellow;font-weight:bold"> - by '.$r['nick'].'</span>';
         if($con==0) {
             $ovulo="window.open('$link?c=$cosd&n=$nick2&s=$stt2', '_self')";
-            $opi.='<p style="display: inline-block" class="black-65" ><span onclick="'.$ovulo.'" style="font-weight:bold;color:mediumpurple;text-decoration:underline;cursor: pointer" id="titolo'.$con.'"></span>'.$jk.'<span id="stato" style="font-weight:bold;color:lightsalmon"></span></p><br>';
+            $opi.='<p style="display: inline-block" class="black-65" ><span onclick="'.$ovulo.'" style="font-weight:bold;color:mediumpurple;text-decoration:underline;cursor: pointer" id="titolo'.$con.'"></span><span class="omin" style="display:none">'.$jk.'</span><span id="stato" style="font-weight:bold;color:lightsalmon"></span></p><br>';
         }else{
             $ovulo="window.open('$link?c=$cosd&n=$nick2&s=$stt2', '_self')";
-            $opi.='<p style="display: inline-block" class="black-65" ><span onclick="'.$ovulo.'" style="font-weight:bold;color:mediumpurple;text-decoration:underline;cursor: pointer" id="titolo'.$con.'"></span>'.$jk.'</p><br>';
+            $opi.='<p style="display: inline-block" class="black-65" ><span onclick="'.$ovulo.'" style="font-weight:bold;color:mediumpurple;text-decoration:underline;cursor: pointer" id="titolo'.$con.'"></span><span class="omin" style="display:none">'.$jk.'</span></p><br>';
             $giu.="getTit($con,'$cosd');";
         }
         $con++;
@@ -89,13 +94,27 @@ else {
         margin-top: 10px;
         margin-bottom: 1px;
     }
-    #video-controls a.tubular-mute{
-        color: red;
+    #ultime{
+        color: hotpink;
+        display: inline-block;
+        font-size: 16px;
+        font-variant: small-caps;
         font-weight: bold;
+        line-height: 27px;
+    }
+    #video-controls a.tubular-mute{
+        background-color: #de0000;
+        border: 2px solid white;
+        border-radius: 15px;
+        color: white;
+        font-weight: bold;
+        margin: 0 8px;
+        padding: 4px 8px;
     }
     #video-controls{
-        width: 363px;
         margin-top: 10px;
+        padding: 8px;
+        width: 474px;
     }
     #video-controls2{
         width: 50px;
@@ -118,19 +137,19 @@ else {
 </style>
     <script>
         var vis=1;
-        $('iframe').attr('src', $('iframe').attr('src'));
         $().ready(function() {
-            $('iframe').attr('src', $('iframe').attr('src'));
-            var options = { videoId: '<?php echo $code ?>', start:<?php echo $stt ?> , ratio: 16/9, repeat: false, mute: <?php echo $sino ?> };
+            var options = { videoId: '<?php echo $code ?>', start:<?php echo ($time==0)?$stt:$time; ?> , ratio: 16/9, repeat: false, mute: <?php echo $sino ?> };
             $('#wrapper').tubular(options);
             videoId ="<?php echo $code ?>";
             ytApiKey ="AIzaSyBsMGK9hgQPW66KepTcw6rW6YTauYMvAfM";
             $.get("https://www.googleapis.com/youtube/v3/videos?part=snippet&id=" + videoId + "&key=" + ytApiKey, function(data) {
                 titolo=data.items[0].snippet.title;
                 $('#titolo0').text(titolo);
+                $('.omin').css("display","inline");
             });
             <?php echo $giu ?>
-            $('iframe').attr('src', $('iframe').attr('src'));
+
+
         });
         function nasc(){
             $('#pri').css("display","none");
@@ -153,12 +172,19 @@ else {
                 titol=data.items[0].snippet.title;
                 $('#titolo'+i).text(titol);
             });
+
         }
         function vai2() {
-            window.open('https://www.youtube.com/watch?v=<?php echo $code ?>','_blank');
+            fty=player.getVideoUrl()+'&t='+Math.round(player.getCurrentTime());
+            window.open(fty,'_blank');
         }
         function vai3() {
             window.open('<?php echo $link ?>?c=<?php echo $code ?>&n=<?php echo $nick ?>&s=<?php echo $stt ?>', '_self');
+        }
+        function full(){
+            player.pauseVideo();
+            str='<?php echo $link ?>?c=<?php echo $code ?>&n=<?php echo $nick ?>&s=<?php echo $stt ?>&h='+Math.round(player.getCurrentTime());
+            window.open(str, '_blank');
         }
     </script>
 </head>
@@ -213,9 +239,9 @@ else {
             errorMessage: 'Il codice deve avere 11 cifre'
         }]);
     </script>
-        <p id="video-controls" class="black-65">Controlli: <a href="#" class="tubular-pause">Play/Pausa</a> | <a href="#" class="tubular-volume-up">Vol +</a> | <a href="#" class="tubular-volume-down">Vol -</a> | <a href="#" class="tubular-mute">Musica!</a> | <a href="#" class="nascondi" id="nascondi" onclick="nasc()" style="color:lightsteelblue;font-weight: bold">Nascondi</a></p>
+        <p id="video-controls" class="black-65">Controlli: <b><a href="#" class="tubular-pause">Play/Pausa</a> | <a href="#" class="tubular-volume-up">Vol +</a> | <a href="#" class="tubular-volume-down">Vol -</a></b><a href="#" class="tubular-mute">Musica!</a><a href="#" class="nascondi" id="nascondi" onclick="nasc()" style="color:lightsteelblue;font-weight: bold">Nascondi</a> | <a href="#" class="full" id="full" onclick="full()" style="color:lawngreen;font-weight: bold">Full Screen</a></p>
         <p id="video-controls2" class="black-65" style="display: none">Controlli:<a href="#" class="nascondi2" id="nascondi2" onclick="nasc2()" style="color:lightsteelblue;font-weight: bold"> Mostra</a></p>
-        <div id="playlist"><p class="black-65" style="font-variant: small-caps;display: inline-block;color:hotpink;font-weight: bold">Ultime Scelte</p><br><?php echo $opi ?></div>
+    <div id="playlist"><p class="black-65" id="ultime">Ultime Scelte</p><br><?php echo $opi ?></div>
 </div>
 
 
