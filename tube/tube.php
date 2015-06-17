@@ -146,6 +146,7 @@ else {
                 titolo=data.items[0].snippet.title;
                 $('#titolo0').text(titolo);
                 $('.omin').css("display","inline");
+                $('#ultime').css("display","inline-block");
             });
             <?php echo $giu ?>
 
@@ -196,7 +197,7 @@ else {
         <input id="mio" onClick="this.select();" value="OminoRandom">
     </div>
     <div>
-            <label  class="black-65" for="mio2"><abbr title="Quello tra le quadre: www.youtube.com/watch?v=[DDfER59Ni6c]" style='cursor:help'>Cod. Youtube:</abbr></label>
+            <label  class="black-65" for="mio2"><abbr title="Quello tra le quadre: www.youtube.com/watch?v=[DDfER59Ni6c]" style='cursor:help;border-bottom: 1px dotted white'>Cod. Youtube:</abbr></label>
             <input id="mio2" class='bar' onClick="this.select();">
     </div>
     <div>
@@ -241,7 +242,7 @@ else {
     </script>
         <p id="video-controls" class="black-65">Controlli: <b><a href="#" class="tubular-pause">Play/Pausa</a> | <a href="#" class="tubular-volume-up">Vol +</a> | <a href="#" class="tubular-volume-down">Vol -</a></b><a href="#" class="tubular-mute">Musica!</a><a href="#" class="nascondi" id="nascondi" onclick="nasc()" style="color:lightsteelblue;font-weight: bold">Nascondi</a> | <a href="#" class="full" id="full" onclick="full()" style="color:lawngreen;font-weight: bold">Full Screen</a></p>
         <p id="video-controls2" class="black-65" style="display: none">Controlli:<a href="#" class="nascondi2" id="nascondi2" onclick="nasc2()" style="color:lightsteelblue;font-weight: bold"> Mostra</a></p>
-    <div id="playlist"><p class="black-65" id="ultime">Ultime Scelte</p><br><?php echo $opi ?></div>
+    <div id="playlist"><p class="black-65" id="ultime" style="display:none">Ultime Scelte</p><br><?php echo $opi ?></div>
 </div>
 
 

@@ -86,19 +86,25 @@
         }
 
         window.onPlayerStateChange = function(state) {
+            $tui=$('#titolo0');
+            $stat=$('#stato');
             if(player.getPlayerState() == 1){
-                $('#titolo0').css("color", "white");
+                $tui.css("color", "white");
 
-                $("#titolo0").removeAttr("onclick");
-                $('#stato').html(' : Playing... ');
-                $("#titolo0").attr("onclick","vai2()");
+                $tui.removeAttr("onclick");
+                $stat.html(' : Playing... ');
+                $tui.attr("onclick","vai2()");
+                $tui.attr('title', 'Apri in YouTube');
                 player.setVolume(25);
             }else if(player.getPlayerState() == 2){
-                $('#titolo0').css("color", "#C8C7C7");
-                $('#stato').html('');
+                $tui.css("color", "#C8C7C7");
+                $stat.html('');
             }
             if(player.getPlayerState() == 0){
-                $("#titolo0").attr("onclick","vai3()");
+                $tui.css("color", "mediumpurple");
+                $tui.attr('title', '');
+                $stat.html('');
+                $tui.attr("onclick","vai3()");
             }
             if (state.data === 0 && options.repeat) { // video ended and repeat option is set true
                 player.seekTo(options.start); // restart
