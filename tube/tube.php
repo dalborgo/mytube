@@ -187,6 +187,7 @@ else {
 
         }
         function vai2() {
+            player.pauseVideo();
             fty=player.getVideoUrl()+'&t='+Math.round(player.getCurrentTime());
             window.open(fty,'_blank');
         }
