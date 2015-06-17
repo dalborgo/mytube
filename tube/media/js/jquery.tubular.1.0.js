@@ -93,8 +93,8 @@
                 $('#stato').html(' : Playing... ');
                 $("#titolo0").attr("onclick","vai2()");
                 player.setVolume(25);
-            }else{
-                $('#titolo0').css("color", "mediumpurple");
+            }else if(player.getPlayerState() == 2){
+                $('#titolo0').css("color", "lightgray");
                 $('#stato').html('');
             }
             if(player.getPlayerState() == 0){
