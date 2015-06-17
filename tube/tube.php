@@ -90,10 +90,7 @@ else {
     .bravo-message-class { background: forestgreen; color: white; padding:2px 4px;
         font-weight: bold; }
     .bummer-message-class { background: purple; color: yellow; padding:2px 4px;font-weight: bold;}
-    p#datis{
-        margin-top: 10px;
-        margin-bottom: 1px;
-    }
+
     #ultime{
         color: hotpink;
         display: inline-block;
@@ -105,7 +102,7 @@ else {
     #video-controls a.tubular-mute{
         background-color: #de0000;
         border: 2px solid white;
-        border-radius: 15px;
+        border-radius: 15px;sp
         color: white;
         font-weight: bold;
         margin: 0 8px;
@@ -115,12 +112,6 @@ else {
         margin-top: 10px;
         padding: 8px;
         width: 474px;
-    }
-    #video-controls2{
-        width: 50px;
-    }
-    #video-controls2{
-        width: 110px;
     }
     label{
         color:white;
@@ -133,7 +124,7 @@ else {
         margin-top:4px;
     }
 
-    #video-controls a, #video-controls2 a { color: #ddd; text-decoration: none; }
+    #video-controls a { color: #ddd; text-decoration: none; }
 </style>
     <script>
         var vis=1;
@@ -153,18 +144,25 @@ else {
 
         });
         function nasc(){
+            nascq=$('#nascondi');
+            vc=$('#video-controls');
+            fuls=$('#full2');
             $('#pri').css("display","none");
-            $('#video-controls').css("display","none");
-            $('#video-controls2').css("display","block");
-            $('#datis').css("display","none");
             $('#playlist').css("display","none");
+            nascq.text('Mostra');
+            nascq.attr("onclick","nasc2()");
+            vc.css("margin-top","0px");
+            fuls.css("display","none");
+            vc.css("width","362px");
         }
         function nasc2(){
             $('#pri').css("display","block");
             $('#playlist').css("display","inline-block");
-            $('#video-controls').css("display","block");
-            $('#datis').css("display","block");
-            $('#video-controls2').css("display","none");
+            nascq.text('Nascondi');
+            nascq.attr("onclick","nasc()");
+            vc.css("margin-top","10px");
+            fuls.css("display","inline");
+            vc.css("width","474px");
         }
         function getTit(i,id){
             videoId =id;
@@ -240,8 +238,8 @@ else {
             errorMessage: 'Il codice deve avere 11 cifre'
         }]);
     </script>
-        <p id="video-controls" class="black-65">Controlli: <b><a href="#" class="tubular-pause">Play/Pausa</a> | <a href="#" class="tubular-volume-up">Vol +</a> | <a href="#" class="tubular-volume-down">Vol -</a></b><a href="#" class="tubular-mute">Musica!</a><a href="#" class="nascondi" id="nascondi" onclick="nasc()" style="color:lightsteelblue;font-weight: bold">Nascondi</a> | <a href="#" class="full" id="full" onclick="full()" style="color:lawngreen;font-weight: bold">Full Screen</a></p>
-        <p id="video-controls2" class="black-65" style="display: none">Controlli:<a href="#" class="nascondi2" id="nascondi2" onclick="nasc2()" style="color:lightsteelblue;font-weight: bold"> Mostra</a></p>
+        <p id="video-controls" class="black-65">Controlli: <b><a href="#" class="tubular-pause">Play/Pausa</a> | <a href="#" class="tubular-volume-up">Vol +</a> | <a href="#" class="tubular-volume-down">Vol -</a></b><a href="#" class="tubular-mute">Musica!</a><a href="#" class="nascondi" id="nascondi" onclick="nasc()" style="color:lightsteelblue;font-weight: bold">Nascondi</a><span id="full2"> | <a href="#" class="full" id="full" onclick="full()" style="color:lawngreen;font-weight: bold">Full Screen</a></span></p>
+
     <div id="playlist"><p class="black-65" id="ultime" style="display:none">Ultime Scelte</p><br><?php echo $opi ?></div>
 </div>
 
