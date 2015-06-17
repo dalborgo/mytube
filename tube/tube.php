@@ -86,6 +86,7 @@ else {
     <script type="text/javascript" charset="utf-8" src="media/js/jquery.tubular.1.0.js"></script>
     <script src='media/js/nod.js'></script>
     <link href="media/css/screen.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <style>
     .bravo-message-class { background: forestgreen; color: white; padding:2px 4px;
         font-weight: bold; }
@@ -111,7 +112,7 @@ else {
     #video-controls{
         margin-top: 10px;
         padding: 8px;
-        width: 436px;
+        width: 366px;
     }
     label{
         color:white;
@@ -153,7 +154,7 @@ else {
             nascq.attr("onclick","nasc2()");
             vc.css("margin-top","0px");
             fuls.css("display","none");
-            vc.css("width","333px");
+            vc.css("width","260px");
         }
         function nasc2(){
             $('#pri').css("display","block");
@@ -162,7 +163,7 @@ else {
             nascq.attr("onclick","nasc()");
             vc.css("margin-top","10px");
             fuls.css("display","inline");
-            vc.css("width","436px");
+            vc.css("width","366px");
         }
         function getTit(i,id){
             videoId =id;
@@ -238,7 +239,7 @@ else {
             errorMessage: 'Il codice deve avere 11 cifre'
         }]);
     </script>
-        <p id="video-controls" class="black-65">Controlli: <b><a href="#" class="tubular-pause" id="pipa" onclick="vai3()" style="color: orange">Play <span style="color: #fff"> | </span></a><a href="#" class="tubular-volume-up">Vol +</a> | <a href="#" class="tubular-volume-down">Vol -</a></b><a href="#" class="tubular-mute" id="musica" onclick="vai3()">Musica!</a><a href="#" class="nascondi" id="nascondi" onclick="nasc()" style="color:lightsteelblue;font-weight: bold">Nascondi</a><span id="full2"> | <a href="#" class="full" id="full" onclick="full()" style="color:lawngreen;font-weight: bold">Full Screen</a></span></p>
+        <p id="video-controls" class="black-65">Controlli: <b><a href="#" class="tubular-pause" id="pipa" onclick="vai3()" style="color: orange"><span style="width:14px;display:inline-block"><i class="fa fa-youtube-play"></i></span> <span style="color: #fff"> | </span></a><a href="#" class="tubular-volume-up"><i class="fa fa-volume-up"></i></a> | <a href="#" class="tubular-volume-down"><i class="fa fa-volume-down"></i></a></b><a href="#" class="tubular-mute" id="musica" onclick="vai3()">Musica!</a><a href="#" class="nascondi" id="nascondi" onclick="nasc()" style="color:lightsteelblue;font-weight: bold">Nascondi</a><span id="full2"> | <a href="#" class="full" id="full" onclick="full()" style="color:lawngreen;font-weight: bold">Full Screen</a></span></p>
 
     <div id="playlist"><p class="black-65" id="ultime" style="display:none">Ultime Scelte</p><br><?php echo $opi ?></div>
 </div>

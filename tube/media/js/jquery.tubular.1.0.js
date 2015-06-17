@@ -92,7 +92,7 @@
             musi=$('#musica');
             if(player.getPlayerState() == 1){
                 $tui.css("color", "white");
-                pipa.html('Pause <span style="color: #fff"> | </span> ');
+                pipa.html('<span style="width:14px;display:inline-block"><i class="fa fa-pause"></i></span> <span style="color: #fff"> | </span> ');
                 $tui.removeAttr("onclick");
                 $stat.html(' : Playing... ');
                 $tui.attr("onclick","vai2()");
@@ -102,13 +102,13 @@
                 player.setVolume(25);
             }else if(player.getPlayerState() == 2){
                 $tui.css("color", "#C8C7C7");
-                pipa.html('Play <span style="color: #fff"> | </span> ');
+                pipa.html('<span style="width:14px;display:inline-block"><i class="fa fa-youtube-play"></i></span> <span style="color: #fff"> | </span> ');
                 $stat.html('');
                 pipa.removeAttr("onclick");
                 musi.removeAttr("onclick");
             }
             if(player.getPlayerState() == 0){
-                pipa.text('Play | ');
+                pipa.html('<span style="width:14px;display:inline-block"><i class="fa fa-youtube-play"></i></span> <span style="color: #fff"> | </span> ');
                 pipa.attr("onclick","vai3()");
                 musi.attr("onclick","vai3()");
                 $tui.css("color", "mediumpurple");
