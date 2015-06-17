@@ -1,5 +1,6 @@
 <?php
 require_once "../sqlkit.php";
+
 if (!isset($_GET['s']))
 {
     $stt = "0";
@@ -10,6 +11,11 @@ if (!isset($_GET['h']))
     $time = "0";
 }else
     $time = $_GET['h'];
+if (!isset($_GET['f']))
+{
+    $fust = "";
+}else
+    $fust = "&f=si";
 
 if (!isset($_GET['n'])) {
     $nick = "";
@@ -36,10 +42,10 @@ if (!isset($_GET['c'])) {
             $code = $r['code'];
             $nick = $r['nick'];
             $stt = $r['start'];
-            $ovulo="window.open('$link?c=$cosd&n=$nick2&s=$stt2', '_self')";
+            $ovulo="window.open('$link?c=$cosd&n=$nick2&s=$stt2".$fust."', '_self')";
             $opi.='<p style="display: inline-block" class="black-65" ><span onclick="'.$ovulo.'" style="font-weight:bold;color:mediumpurple;text-decoration:underline;cursor: pointer" id="titolo'.$con.'"></span><span class="omin" style="display:none">'.$jk.'</span><span id="stato" style="font-weight:bold;color:lightsalmon"></span></p><br>';
         }else{
-            $ovulo="window.open('$link?c=$cosd&n=$nick2&s=$stt2', '_self')";
+            $ovulo="window.open('$link?c=$cosd&n=$nick2&s=$stt2".$fust."', '_self')";
             $opi.='<p style="display: inline-block" class="black-65" ><span onclick="'.$ovulo.'" style="font-weight:bold;color:mediumpurple;text-decoration:underline;cursor: pointer" id="titolo'.$con.'"></span><span class="omin" style="display:none">'.$jk.'</span></p><br>';
             $giu.="getTit($con,'$cosd');";
         }
@@ -66,10 +72,10 @@ else {
         if(strlen($nick2)>0)
             $jk='<span style="color:yellow;font-weight:bold"> - by '.$r['nick'].'</span>';
         if($con==0) {
-            $ovulo="window.open('$link?c=$cosd&n=$nick2&s=$stt2', '_self')";
+            $ovulo="window.open('$link?c=$cosd&n=$nick2&s=$stt2".$fust."', '_self')";
             $opi.='<p style="display: inline-block" class="black-65" ><span onclick="'.$ovulo.'" style="font-weight:bold;color:mediumpurple;text-decoration:underline;cursor: pointer" id="titolo'.$con.'"></span><span class="omin" style="display:none">'.$jk.'</span><span id="stato" style="font-weight:bold;color:lightsalmon"></span></p><br>';
         }else{
-            $ovulo="window.open('$link?c=$cosd&n=$nick2&s=$stt2', '_self')";
+            $ovulo="window.open('$link?c=$cosd&n=$nick2&s=$stt2".$fust."', '_self')";
             $opi.='<p style="display: inline-block" class="black-65" ><span onclick="'.$ovulo.'" style="font-weight:bold;color:mediumpurple;text-decoration:underline;cursor: pointer" id="titolo'.$con.'"></span><span class="omin" style="display:none">'.$jk.'</span></p><br>';
             $giu.="getTit($con,'$cosd');";
         }
@@ -128,7 +134,7 @@ else {
     #video-controls a { color: #ddd; text-decoration: none; }
 </style>
     <script>
-        var vis=1;
+        var ilare='';
         $().ready(function() {
             var options = { videoId: '<?php echo $code ?>', start:<?php echo ($time==0)?$stt:$time; ?> , ratio: 16/9, repeat: false, mute: <?php echo $sino ?> };
             $('#wrapper').tubular(options);
@@ -141,8 +147,11 @@ else {
                 $('#ultime').css("display","inline-block");
             });
             <?php echo $giu ?>
-
-
+            ilare='<?php echo $fust ?>';
+            if (ilare == '&f=si'){
+                $('#full2').css("display","none");
+                $('#video-controls').css("width","276px");
+            }
         });
         function nasc(){
             nascq=$('#nascondi');
@@ -162,8 +171,11 @@ else {
             nascq.text('Nascondi');
             nascq.attr("onclick","nasc()");
             vc.css("margin-top","10px");
-            fuls.css("display","inline");
-            vc.css("width","366px");
+            if(ilare!='&f=si') {
+                fuls.css("display", "inline");
+                vc.css("width", "366px");
+            }else
+                vc.css("width", "276px");
         }
         function getTit(i,id){
             videoId =id;
@@ -179,11 +191,11 @@ else {
             window.open(fty,'_blank');
         }
         function vai3() {
-            window.open('<?php echo $link ?>?c=<?php echo $code ?>&n=<?php echo $nick ?>&s=<?php echo $stt ?>', '_self');
+            window.open('<?php echo $link ?>?c=<?php echo $code ?>&n=<?php echo $nick ?>&s=<?php echo $stt; echo $fust; ?>', '_self');
         }
         function full(){
             player.pauseVideo();
-            str='<?php echo $link ?>?c=<?php echo $code ?>&n=<?php echo $nick ?>&s=<?php echo $stt ?>&h='+Math.round(player.getCurrentTime());
+            str='<?php echo $link ?>?c=<?php echo $code ?>&n=<?php echo $nick ?>&s=<?php echo $stt ?>&f=si&h='+Math.round(player.getCurrentTime());
             window.open(str, '_blank');
         }
     </script>
