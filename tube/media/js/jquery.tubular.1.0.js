@@ -94,7 +94,7 @@
                 $("#titolo0").attr("onclick","vai2()");
                 player.setVolume(25);
             }else if(player.getPlayerState() == 2){
-                $('#titolo0').css("color", "lightgray");
+                $('#titolo0').css("color", "#C8C7C7");
                 $('#stato').html('');
             }
             if(player.getPlayerState() == 0){
