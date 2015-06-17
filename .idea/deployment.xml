@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="On explicit save action" serverName="tmp">
+  <component name="PublishConfigData" autoUpload="On explicit save action" serverName="tmp" uploadOnCheckin="bf29c2d3-8587-42e5-b02f-478e483ae4a6">
     <serverData>
       <paths name="ryder">
         <serverdata>
@@ -17,6 +17,7 @@
         </serverdata>
       </paths>
     </serverData>
+    <option name="myUploadOnCheckinName" value="tmp" />
     <option name="myAutoUpload" value="ON_EXPLICIT_SAVE" />
   </component>
 </project>
