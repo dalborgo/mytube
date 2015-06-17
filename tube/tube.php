@@ -13,10 +13,14 @@ if (!isset($_GET['h']))
     $time = $_GET['h'];
 if (!isset($_GET['f']))
 {
+    $merlu="";
+    $siervo="";
     $fust = "";
-}else
+}else{
     $fust = "&f=si";
-
+    $merlu="#wrapper {width: auto;}";
+    $siervo="display:none";
+}
 if (!isset($_GET['n'])) {
     $nick = "";
 }
@@ -97,7 +101,7 @@ else {
     .bravo-message-class { background: forestgreen; color: white; padding:2px 4px;
         font-weight: bold; }
     .bummer-message-class { background: purple; color: yellow; padding:2px 4px;font-weight: bold;}
-
+    <?php echo $merlu ?>
     #ultime{
         color: hotpink;
         display: inline-block;
@@ -135,9 +139,15 @@ else {
 </style>
     <script>
         var ilare='';
+
         $().ready(function() {
+            ilare='<?php echo $fust ?>';
+            if (ilare == '&f=si'){
+                $('#video-controls').css("width","276px");
+            }
             var options = { videoId: '<?php echo $code ?>', start:<?php echo ($time==0)?$stt:$time; ?> , ratio: 16/9, repeat: false, mute: <?php echo $sino ?> };
-            $('#wrapper').tubular(options);
+            rapp=$('#wrapper').tubular(options);
+
             videoId ="<?php echo $code ?>";
             ytApiKey ="AIzaSyBsMGK9hgQPW66KepTcw6rW6YTauYMvAfM";
             $.get("https://www.googleapis.com/youtube/v3/videos?part=snippet&id=" + videoId + "&key=" + ytApiKey, function(data) {
@@ -147,11 +157,7 @@ else {
                 $('#ultime').css("display","inline-block");
             });
             <?php echo $giu ?>
-            ilare='<?php echo $fust ?>';
-            if (ilare == '&f=si'){
-                $('#full2').css("display","none");
-                $('#video-controls').css("width","276px");
-            }
+
         });
         function nasc(){
             nascq=$('#nascondi');
@@ -252,7 +258,7 @@ else {
             errorMessage: 'Il codice deve avere 11 cifre'
         }]);
     </script>
-        <p id="video-controls" class="black-65">Controlli: <b><a href="#" class="tubular-pause" id="pipa" onclick="vai3()" style="color: orange"><span style="width:14px;display:inline-block"><i class="fa fa-youtube-play"></i></span> <span style="color: #fff"> | </span></a><a href="#" class="tubular-volume-up"><i class="fa fa-volume-up"></i></a> | <a href="#" class="tubular-volume-down"><i class="fa fa-volume-down"></i></a></b><a href="#" class="tubular-mute" id="musica" onclick="vai3()">Musica!</a><a href="#" class="nascondi" id="nascondi" onclick="nasc()" style="color:lightsteelblue;font-weight: bold">Nascondi</a><span id="full2"> | <a href="#" class="full" id="full" onclick="full()" style="color:lawngreen;font-weight: bold">Full Screen</a></span></p>
+        <p id="video-controls" class="black-65">Controlli: <b><a href="#" class="tubular-pause" id="pipa" onclick="vai3()" style="color: orange"><span style="width:14px;display:inline-block"><i class="fa fa-youtube-play"></i></span> <span style="color: #fff"> | </span></a><a href="#" class="tubular-volume-up"><i class="fa fa-volume-up"></i></a> | <a href="#" class="tubular-volume-down"><i class="fa fa-volume-down"></i></a></b><a href="#" class="tubular-mute" id="musica" onclick="vai3()">Musica!</a><a href="#" class="nascondi" id="nascondi" onclick="nasc()" style="color:lightsteelblue;font-weight: bold">Nascondi</a><span id="full2" style="<?php echo $siervo ?>"> | <a href="#" class="full" id="full" onclick="full()" style="color:lawngreen;font-weight: bold;">Full Screen</a></span></p>
 
     <div id="playlist"><p class="black-65" id="ultime" style="display:none">Ultime Scelte</p><br><?php echo $opi ?></div>
 </div>
