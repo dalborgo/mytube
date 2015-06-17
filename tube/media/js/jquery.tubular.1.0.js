@@ -115,6 +115,10 @@
                 $tui.attr('title', '');
                 $stat.html('');
                 $tui.attr("onclick","vai3()");
+                if (Math.round(player.getCurrentTime()) == tempor) {
+                    player.playVideo();
+                    tempor='no';
+                }
             }
             if (state.data === 0 && options.repeat) { // video ended and repeat option is set true
                 player.seekTo(options.start); // restart

@@ -139,7 +139,7 @@ else {
 </style>
     <script>
         var ilare='';
-
+        var tempor='<?php echo $time ?>';
         $().ready(function() {
             ilare='<?php echo $fust ?>';
             if (ilare == '&f=si'){
