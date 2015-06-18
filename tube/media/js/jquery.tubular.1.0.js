@@ -90,6 +90,7 @@
             $stat=$('#stato');
             pipa=$('#pipa');
             musi=$('#musica');
+            f2=$('#full2');
             if(player.getPlayerState() == 1){
                 $tui.css("color", "white");
                 pipa.html('<span style="width:14px;display:inline-block"><i class="fa fa-pause"></i></span> <span style="color: #fff"> | </span> ');
@@ -106,6 +107,10 @@
                 $stat.html('');
                 pipa.removeAttr("onclick");
                 musi.removeAttr("onclick");
+            }
+            if(player.getPlayerState() == -1) {
+                if(ilare=='')
+                    f2.css("display", "inline");
             }
             if(player.getPlayerState() == 0){
                 pipa.html('<span style="width:14px;display:inline-block"><i class="fa fa-youtube-play"></i></span> <span style="color: #fff"> | </span> ');
