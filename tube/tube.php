@@ -14,10 +14,11 @@ if (!isset($_GET['h']))
 if (!isset($_GET['f']))
 {
     $merlu="";
-
+    $fust2 = "";
     $fust = "";
 }else{
     $fust = "&f=si";
+    $fust2 = "f=si&";
     $merlu="#wrapper {width: auto;}";
 
 }
@@ -33,7 +34,7 @@ $sino="true";
 $link = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
 
 if (!isset($_GET['c'])) {
-    $res = query("SELECT * FROM `song` ORDER BY id desc LIMIT 15");
+    $res = query("SELECT * FROM `song` ORDER BY id desc LIMIT 14");
     $con=0;
     while (($r = mysql_fetch_assoc($res))) {
         $cosd=$r['code'];
@@ -66,7 +67,7 @@ else {
     $arr['code']=$code;
     $arr['start']=$stt;
     repTV("song",$arr);
-    $res = query("SELECT * FROM `song` ORDER BY id desc LIMIT 15");
+    $res = query("SELECT * FROM `song` ORDER BY id desc LIMIT 14");
     $con=0;
     while (($r = mysql_fetch_assoc($res))) {
         $cosd=$r['code'];
@@ -91,7 +92,7 @@ else {
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Tube</title>
+    <title>MyTube</title>
     <script src="media/js/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" charset="utf-8" src="media/js/jquery.tubular.1.0.js"></script>
     <script src='media/js/nod.js'></script>
@@ -219,7 +220,7 @@ else {
     </div>
 
     <button class='submit-btn'
-            onclick="window.open('<?php echo $link ?>?c=' + document.getElementById('mio2').value +'&n='+ document.getElementById('mio').value+'&s='+ document.getElementById('mio3').value, '_self');">Ok</button>
+            onclick="window.open('<?php echo $link ?>?<?php echo $fust2 ?>c=' + document.getElementById('mio2').value +'&n='+ document.getElementById('mio').value+'&s='+ document.getElementById('mio3').value, '_self');">Ok</button>
     </div>
     <script>
         var myNod = nod();
@@ -253,7 +254,7 @@ else {
             errorMessage: 'Il codice deve avere 11 cifre'
         }]);
     </script>
-        <p id="video-controls" class="black-65">Controlli: <b><a href="#" class="tubular-pause" id="pipa" onclick="vai3()" style="color: orange"><span style="width:14px;display:inline-block"><i class="fa fa-youtube-play"></i></span> <span style="color: #fff"> | </span></a><a href="#" class="tubular-volume-up"><i class="fa fa-volume-up"></i></a> | <a href="#" class="tubular-volume-down"><i class="fa fa-volume-down"></i></a></b><a href="#" class="tubular-mute" id="musica" onclick="vai3()">Musica!</a><a href="#" class="nascondi" id="nascondi" onclick="nasc()" style="color:lightsteelblue;font-weight: bold">Nascondi</a><span id="full2" style="display:none;margin-left: 8px">&nbsp;&nbsp;<a href="#" class="full" id="full" onclick="full()" style="color:lawngreen;font-weight: bold;">Full Screen</a></span></p>
+        <p id="video-controls" class="black-65">Controlli: <b><a href="#" class="tubular-pause" id="pipa" onclick="vai3()" style="color: orange"><span style="width:14px;display:inline-block"><i class="fa fa-youtube-play"></i></span> <span style="color: #fff"> | </span></a><a href="#" class="tubular-volume-up"><i class="fa fa-volume-up"></i></a> | <a href="#" class="tubular-volume-down"><i class="fa fa-volume-down"></i></a></b><a href="#" class="tubular-mute" id="musica" onclick="vai3()">Musica!</a><a href="#" class="nascondi" id="nascondi" onclick="nasc()" style="color:lightsteelblue;font-weight: bold">Nascondi</a><span id="full2" style="display:none;margin-left: 0px"> | <a href="#" class="full" id="full" onclick="full()" style="color:lawngreen;font-weight: bold;">Full Screen</a></span></p>
 
     <div id="playlist"><p class="black-65" id="ultime" style="display:none">Ultime Scelte</p><br><?php echo $opi ?></div>
 </div>
