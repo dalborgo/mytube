@@ -91,7 +91,7 @@ else {
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Tube</title>
+    <title>MyTube</title>
     <script src="media/js/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" charset="utf-8" src="media/js/jquery.tubular.1.0.js"></script>
     <script src='media/js/nod.js'></script>
@@ -253,7 +253,7 @@ else {
             errorMessage: 'Il codice deve avere 11 cifre'
         }]);
     </script>
-        <p id="video-controls" class="black-65">Controlli: <b><a href="#" class="tubular-pause" id="pipa" onclick="vai3()" style="color: orange"><span style="width:14px;display:inline-block"><i class="fa fa-youtube-play"></i></span> <span style="color: #fff"> | </span></a><a href="#" class="tubular-volume-up"><i class="fa fa-volume-up"></i></a> | <a href="#" class="tubular-volume-down"><i class="fa fa-volume-down"></i></a></b><a href="#" class="tubular-mute" id="musica" onclick="vai3()">Musica!</a><a href="#" class="nascondi" id="nascondi" onclick="nasc()" style="color:lightsteelblue;font-weight: bold">Nascondi</a><span id="full2" style="display:none;margin-left: 8px">&nbsp;&nbsp;<a href="#" class="full" id="full" onclick="full()" style="color:lawngreen;font-weight: bold;">Full Screen</a></span></p>
+        <p id="video-controls" class="black-65">Controlli: <b><a href="#" class="tubular-pause" id="pipa" onclick="vai3()" style="color: orange"><span style="width:14px;display:inline-block"><i class="fa fa-youtube-play"></i></span> <span style="color: #fff"> | </span></a><a href="#" class="tubular-volume-up"><i class="fa fa-volume-up"></i></a> | <a href="#" class="tubular-volume-down"><i class="fa fa-volume-down"></i></a></b><a href="#" class="tubular-mute" id="musica" onclick="vai3()">Musica!</a><a href="#" class="nascondi" id="nascondi" onclick="nasc()" style="color:lightsteelblue;font-weight: bold">Nascondi</a><span id="full2" style="display:none;margin-left: 0px"> | <a href="#" class="full" id="full" onclick="full()" style="color:lawngreen;font-weight: bold;">Full Screen</a></span></p>
 
     <div id="playlist"><p class="black-65" id="ultime" style="display:none">Ultime Scelte</p><br><?php echo $opi ?></div>
 </div>
